@@ -141,10 +141,10 @@ export const LoginForm = () => {
       </Box>
 
       <Box display="flex" justifyContent="space-between" mt={1}>
-        <Link href="/forgot-password" underline="none">
+        <Link href="#" underline="none">
           {t('login.forgotPassword')}
         </Link>
-        <Link href="/signup" underline="none">
+        <Link href="/register" underline="none">
           {t('login.createAccount')}
         </Link>
       </Box>

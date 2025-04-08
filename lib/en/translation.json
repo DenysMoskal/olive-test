@@ -8,6 +8,17 @@
     "forgotPassword": "Forgot password?",
     "createAccount": "Create new account"
   },
+  "register": {
+    "title": "Register",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email Address",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "nextButton": "Next",
+    "backToLogin": "Back to login",
+    "passwordRequirements": "Must be at least 8 english characters, and contain 1 uppercase, 1 lowercase and 1 digit"
+  },
   "slogan": {
     "take": "Take",
     "reality": "reality",
@@ -18,6 +29,11 @@
     "emailRequired": "Email is required",
     "emailInvalid": "Please enter a valid email",
     "passwordRequired": "Password is required",
-    "passwordMinLength": "Password must be at least 6 characters"
+    "passwordMinLength": "Password must be at least 8 characters",
+    "firstNameRequired": "First name is required",
+    "lastNameRequired": "Last name is required",
+    "passwordRequirements": "Password must contain at least one uppercase letter, one lowercase letter, and one number",
+    "passwordsMatch": "Passwords must match",
+    "confirmPasswordRequired": "Please confirm your password"
   }
 }

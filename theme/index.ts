@@ -20,6 +20,25 @@ const theme = createTheme({
     fontFamily: 'Inter',
   },
   components: {
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          '&.Mui-focused': {
+            backgroundColor: 'transparent',
+          },
+          '& input:-webkit-autofill': {
+            WebkitBoxShadow: 'none',
+            WebkitTextFillColor: '#101828',
+            caretColor: '#e8f0fe',
+            transition: 'background-color 5000s ease-in-out 0s',
+          },
+          '&:has(input:-webkit-autofill)': {
+            backgroundColor: 'rgba(32, 85, 255, 0.04)',
+          },
+        },
+      },
+    },
+
     MuiLink: {
       styleOverrides: {
         root: {
@@ -69,6 +88,9 @@ const theme = createTheme({
             '& .MuiInputBase-input::placeholder': {
               color: 'rgb(102, 112, 133)',
               opacity: 1,
+            },
+            '&:has(input:-webkit-autofill)': {
+              backgroundColor: 'rgba(32, 85, 255, 0.04)',
             },
           },
           '& .MuiInputLabel-root': {

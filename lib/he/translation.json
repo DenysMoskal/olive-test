@@ -8,6 +8,17 @@
     "forgotPassword": "שכחת סיסמה?",
     "createAccount": "צור חשבון חדש"
   },
+  "register": {
+    "title": "הרשמה",
+    "firstName": "שם פרטי",
+    "lastName": "שם משפחה",
+    "email": "כתובת אימייל",
+    "password": "סיסמה",
+    "confirmPassword": "אימות סיסמה",
+    "nextButton": "הבא",
+    "backToLogin": "חזרה להתחברות",
+    "passwordRequirements": "חייב להיות לפחות 8 תווים באנגלית, ולהכיל אות גדולה אחת, אות קטנה אחת וספרה אחת"
+  },
   "slogan": {
     "take": "קח",
     "reality": "מציאות",
@@ -18,6 +29,11 @@
     "emailRequired": "נדרש אימייל",
     "emailInvalid": "אנא הזן כתובת אימייל תקינה",
     "passwordRequired": "נדרשת סיסמה",
-    "passwordMinLength": "הסיסמה חייבת להכיל לפחות 6 תווים"
+    "passwordMinLength": "הסיסמה חייבת להכיל לפחות 8 תווים",
+    "firstNameRequired": "שם פרטי נדרש",
+    "lastNameRequired": "שם משפחה נדרש",
+    "passwordRequirements": "הסיסמה חייבת להכיל לפחות אות גדולה אחת, אות קטנה אחת ומספר אחד",
+    "passwordsMatch": "הסיסמאות חייבות להתאים",
+    "confirmPasswordRequired": "אנא אשר את הסיסמה שלך"
   }
 }
