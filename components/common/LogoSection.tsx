@@ -1,4 +1,4 @@
-import { Box, Typography, Fade } from '@mui/material';
+import { Box, Typography, Fade, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -9,9 +9,18 @@ export const LogoSection = () => {
   const [showLogo, setShowLogo] = useState(false);
   const { t } = useTranslation();
 
+  const isMobile = useMediaQuery('(max-width:700px)');
+  const isTablet = useMediaQuery('(min-width:701px) and (max-width:900px)');
+
   useEffect(() => {
     setShowLogo(true);
   }, []);
+
+  if (isMobile) {
+    return null;
+  }
+
+  const fontSize = isTablet ? 48 : 64;
 
   return (
     <Box
@@ -31,7 +40,7 @@ export const LogoSection = () => {
       <Typography
         variant="h1"
         component="p"
-        fontSize={64}
+        fontSize={fontSize}
         fontWeight={400}
         my={5}
       >
@@ -41,7 +50,7 @@ export const LogoSection = () => {
           bgcolor={theme.palette.primary.main}
           borderRadius={'8px'}
           color="white"
-          fontSize={64}
+          fontSize={fontSize}
           fontWeight={400}
           px={1}
         >
