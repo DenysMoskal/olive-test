@@ -1,7 +1,7 @@
 'use client';
 import { Box } from '@mui/material';
 import '../../lib/i18n';
-import { LogoSection } from '@/components/common';
+import { LanguageSwitcher, LogoSection } from '@/components/common';
 import { LoginForm } from '@/components/login';
 
 export default function Login() {
@@ -12,6 +12,7 @@ export default function Login() {
       alignItems="center"
       justifyContent="center"
     >
+      <LanguageSwitcher />
       <LogoSection />
       <LoginForm />
     </Box>

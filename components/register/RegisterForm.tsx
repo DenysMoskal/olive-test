@@ -6,6 +6,7 @@ import {
   InputAdornment,
   IconButton,
   Link,
+  CircularProgress,
 } from '@mui/material';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
@@ -16,12 +17,17 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import theme from '@/theme';
 import { registerSchema, RegisterFormData } from './types';
+import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/navigation';
 
 export function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [eyeColor, setEyeColor] = useState('black');
   const { t } = useTranslation();
+  const router = useRouter();
+
+  const { registerUser, isLoading, isError, errorMessage } = useAuth();
 
   const {
     control,
@@ -38,8 +44,12 @@ export function RegisterForm() {
     },
   });
 
-  const onSubmit = (data: RegisterFormData) => {
-    console.log(data);
+  const onSubmit = async (data: RegisterFormData) => {
+    const success = await registerUser(data);
+
+    if (success) {
+      router.push('/login');
+    }
   };
 
   const handleClickShowPassword = () => {
@@ -87,6 +97,12 @@ export function RegisterForm() {
         />
       </Link>
 
+      {isError && errorMessage && (
+        <Typography color="error" mb={2}>
+          {errorMessage}
+        </Typography>
+      )}
+
       <Box component="form" onSubmit={handleSubmit(onSubmit)} px={1}>
         <Controller
           name="firstName"
@@ -101,6 +117,7 @@ export function RegisterForm() {
               error={!!errors.firstName}
               helperText={errors.firstName?.message}
               sx={{ mb: 1.5 }}
+              disabled={isLoading}
             />
           )}
         />
@@ -118,6 +135,7 @@ export function RegisterForm() {
               error={!!errors.lastName}
               helperText={errors.lastName?.message}
               sx={{ mb: 1.5 }}
+              disabled={isLoading}
             />
           )}
         />
@@ -135,6 +153,7 @@ export function RegisterForm() {
               error={!!errors.email}
               helperText={errors.email?.message}
               sx={{ mb: 1.5 }}
+              disabled={isLoading}
             />
           )}
         />
@@ -160,6 +179,7 @@ export function RegisterForm() {
                   color: '#667085',
                 },
               }}
+              disabled={isLoading}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -167,6 +187,7 @@ export function RegisterForm() {
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
                       edge="end"
+                      disabled={isLoading}
                       sx={{
                         transition: 'color 0.3s ease',
                         borderRadius: '8px',
@@ -212,6 +233,7 @@ export function RegisterForm() {
               error={!!errors.confirmPassword}
               helperText={errors.confirmPassword?.message}
               sx={{ mb: 1.5 }}
+              disabled={isLoading}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -219,6 +241,7 @@ export function RegisterForm() {
                       aria-label="toggle confirm password visibility"
                       onClick={handleClickShowConfirmPassword}
                       edge="end"
+                      disabled={isLoading}
                       sx={{
                         transition: 'color 0.3s ease',
                         borderRadius: '8px',
@@ -255,9 +278,14 @@ export function RegisterForm() {
           size="large"
           fullWidth
           type="submit"
+          disabled={isLoading}
           sx={{ mt: 2 }}
         >
-          {t('register.nextButton')}
+          {isLoading ? (
+            <CircularProgress size={24} color="inherit" />
+          ) : (
+            t('register.nextButton')
+          )}
         </Button>
       </Box>
     </Box>

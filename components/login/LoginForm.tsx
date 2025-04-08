@@ -6,6 +6,7 @@ import {
   Link,
   InputAdornment,
   IconButton,
+  CircularProgress,
 } from '@mui/material';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
@@ -15,11 +16,16 @@ import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import theme from '@/theme';
 import { loginSchema, FormData } from '@/components/login/types';
+import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/navigation';
 
 export const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [eyeColor, setEyeColor] = useState('black');
   const { t } = useTranslation();
+  const router = useRouter();
+
+  const { loginUser, isLoading, isError, errorMessage } = useAuth();
 
   const {
     control,
@@ -33,8 +39,12 @@ export const LoginForm = () => {
     },
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
+  const onSubmit = async (data: FormData) => {
+    const success = await loginUser(data);
+
+    if (success) {
+      router.push('/dashboard');
+    }
   };
 
   const handleClickShowPassword = () => {
@@ -59,6 +69,12 @@ export const LoginForm = () => {
         <br />
         {t('login.loginToContinue')}
       </Typography>
+
+      {isError && errorMessage && (
+        <Typography color="error" mb={2}>
+          {errorMessage}
+        </Typography>
+      )}
 
       <Box component="form" onSubmit={handleSubmit(onSubmit)}>
         <Controller
@@ -134,9 +150,14 @@ export const LoginForm = () => {
           size="large"
           fullWidth
           type="submit"
+          disabled={isLoading}
           sx={{ mt: 2, mb: 2 }}
         >
-          {t('login.loginButton')}
+          {isLoading ? (
+            <CircularProgress size={24} color="inherit" />
+          ) : (
+            t('login.loginButton')
+          )}
         </Button>
       </Box>
 
