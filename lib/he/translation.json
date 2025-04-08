@@ -1,0 +1,23 @@
+{
+  "login": {
+    "welcome": "ברוך הבא!",
+    "loginToContinue": "התחבר כדי להמשיך",
+    "emailAddress": "כתובת אימייל",
+    "password": "סיסמה",
+    "loginButton": "התחברות",
+    "forgotPassword": "שכחת סיסמה?",
+    "createAccount": "צור חשבון חדש"
+  },
+  "slogan": {
+    "take": "קח",
+    "reality": "מציאות",
+    "toTheNext": "לרמה",
+    "level": "הבאה"
+  },
+  "validation": {
+    "emailRequired": "נדרש אימייל",
+    "emailInvalid": "אנא הזן כתובת אימייל תקינה",
+    "passwordRequired": "נדרשת סיסמה",
+    "passwordMinLength": "הסיסמה חייבת להכיל לפחות 6 תווים"
+  }
+}

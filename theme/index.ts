@@ -40,6 +40,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
+            height: '48px',
             borderRadius: '8px',
             color: '#101828',
             '&:hover .MuiOutlinedInput-notchedOutline': {
@@ -49,6 +50,22 @@ const theme = createTheme({
               borderColor: '#2055FF',
               borderWidth: '2px',
             },
+            '&.Mui-error': {
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderColor: '#d32f2f',
+              },
+              '& .MuiInputLabel-root': {
+                color: '#d32f2f',
+              },
+              '& .MuiInputBase-input': {
+                color: '#d32f2f',
+              },
+            },
+            '& .MuiInputBase-input': {
+              padding: '12px 14px',
+              height: '24px',
+              boxSizing: 'border-box',
+            },
             '& .MuiInputBase-input::placeholder': {
               color: 'rgb(102, 112, 133)',
               opacity: 1,
@@ -56,9 +73,16 @@ const theme = createTheme({
           },
           '& .MuiInputLabel-root': {
             color: 'rgb(102, 112, 133)',
+            transform: 'translate(14px, 14px) scale(1)',
+          },
+          '& .MuiInputLabel-shrink': {
+            transform: 'translate(14px, -6px) scale(0.75)',
           },
           '& .MuiFormLabel-root.Mui-focused': {
             color: '#2055FF',
+          },
+          '& .MuiFormLabel-root.Mui-error': {
+            color: '#d32f2f',
           },
         },
       },
@@ -76,13 +100,24 @@ const theme = createTheme({
           },
         },
         sizeLarge: {
-          height: '48px',
+          height: '56px',
           padding: '12.5px 14px',
         },
         containedPrimary: {
           backgroundColor: '#2055FF',
-          '&:hover': {
-            backgroundColor: '#1a46cc',
+        },
+      },
+    },
+
+    MuiButtonBase: {
+      styleOverrides: {
+        root: {
+          '&.MuiIconButton-root': {
+            '&[aria-label="toggle password visibility"]': {
+              '& .MuiTouchRipple-child': {
+                borderRadius: '8px',
+              },
+            },
           },
         },
       },

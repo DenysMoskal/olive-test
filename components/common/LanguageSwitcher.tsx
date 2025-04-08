@@ -2,7 +2,7 @@
 import { Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
-const LanguageSwitcher = () => {
+export const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
 
   const toggleLanguage = () => {
@@ -23,5 +23,3 @@ const LanguageSwitcher = () => {
     </Button>
   );
 };
-
-export default LanguageSwitcher;

@@ -4,6 +4,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 
 import './globals.css';
 import RTLProvider from '@/providers/RTLProvider';
+import { Container, Box } from '@mui/material';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -24,7 +25,40 @@ export default function RootLayout({
     <html lang="en">
       <AppRouterCacheProvider>
         <RTLProvider>
-          <body className={`${inter.variable}`}>{children}</body>
+          <body className={`${inter.variable}`}>
+            <Box
+              sx={{
+                position: 'relative',
+                overflow: 'hidden',
+                minHeight: '100vh',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  right: 0,
+                  width: '70%',
+                  height: '100%',
+                  background: 'rgb(247, 247, 247)',
+                  transform: 'skew(-13.9deg, 0deg)',
+                  transformOrigin: 'center bottom',
+                  zIndex: 0,
+                },
+              }}
+            >
+              <Container
+                sx={{
+                  maxWidth: '1285px',
+                  display: 'flex',
+                  padding: '0px 40px',
+                  minHeight: '100vh',
+                  position: 'relative',
+                  zIndex: 1,
+                }}
+              >
+                {children}
+              </Container>
+            </Box>
+          </body>
         </RTLProvider>
       </AppRouterCacheProvider>
     </html>

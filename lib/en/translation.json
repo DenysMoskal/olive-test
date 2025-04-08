@@ -1,0 +1,23 @@
+{
+  "login": {
+    "welcome": "Welcome!",
+    "loginToContinue": "Login to continue",
+    "emailAddress": "Email address",
+    "password": "Password",
+    "loginButton": "Login",
+    "forgotPassword": "Forgot password?",
+    "createAccount": "Create new account"
+  },
+  "slogan": {
+    "take": "Take",
+    "reality": "reality",
+    "toTheNext": "to the next",
+    "level": "level"
+  },
+  "validation": {
+    "emailRequired": "Email is required",
+    "emailInvalid": "Please enter a valid email",
+    "passwordRequired": "Password is required",
+    "passwordMinLength": "Password must be at least 6 characters"
+  }
+}
